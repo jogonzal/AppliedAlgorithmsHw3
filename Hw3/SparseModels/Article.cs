@@ -7,27 +7,22 @@ namespace Hw3.SparseModels
 	public class Article
 	{
 		public int ArticleId { get; }
-		private readonly Dictionary<int, int> _wordCounts;
+		public IReadOnlyDictionary<int, int> WordCounts { get; }
 
 		public Article(int articleId, IList<DataModel> dataModels)
 		{
 			ArticleId = articleId;
-			_wordCounts = new Dictionary<int, int>(dataModels.Count);
+			var wordCounts = new Dictionary<int, int>(dataModels.Count);
 			foreach (var dataModel in dataModels)
 			{
-				_wordCounts.Add(dataModel.WordId, dataModel.Count);
+				wordCounts.Add(dataModel.WordId, dataModel.Count);
 			}
+			WordCounts = wordCounts;
 		}
 
-		public int GetWordCount(int wordId)
+		public Article(IReadOnlyDictionary<int, int> wordCounts)
 		{
-			int wordCount;
-			if (_wordCounts.TryGetValue(wordId, out wordCount))
-			{
-				return wordCount;
-			}
-
-			return 0;
+			WordCounts = wordCounts;
 		}
 	}
 }
