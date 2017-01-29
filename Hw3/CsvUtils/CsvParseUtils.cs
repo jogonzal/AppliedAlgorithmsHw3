@@ -12,6 +12,8 @@ namespace Hw3.CsvUtils
 	{
 		public static void ParseCsvFiles(out List<DataModel> dataModels, out List<GroupModel> groupModels, out List<LabelModel> labelModels)
 		{
+			// Simply go into the CSV files and parse them out - CSVHelper will assign them to the model properties in the order
+			// that they show
 			string pathToRoot = Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\collateral\");
 			string pathToData = Path.Combine(pathToRoot, "data50.csv");
 			string pathToGroups = Path.Combine(pathToRoot, "groups.csv");

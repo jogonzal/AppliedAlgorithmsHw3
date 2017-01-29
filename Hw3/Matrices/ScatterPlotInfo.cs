@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+
 using Hw3.Similarities;
 
 namespace Hw3.Matrices
@@ -45,6 +46,6 @@ namespace Hw3.Matrices
 			}
 
 			return new ScatterPlotInfo($"Scatter plot for article 3 similarities ({articleSet.D} dimensions)", articleSet.D, coordinates);
-        }
+		}
 	}
 }

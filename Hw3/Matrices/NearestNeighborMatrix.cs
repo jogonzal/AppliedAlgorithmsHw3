@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Hw3.Matrices;
+﻿using Hw3.Matrices;
 using Hw3.Similarities;
 using Hw3.SparseModels;
 
