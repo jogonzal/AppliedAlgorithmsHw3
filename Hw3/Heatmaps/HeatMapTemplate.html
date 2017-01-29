@@ -17,9 +17,55 @@
         },
         tooltip: {
             formatter: function () {
-                return '<b>Group ' + this.point.x + ' compared with Group ' + this.point.y +' </b> had a similarity <br><b>' + this.point.value;
+                return '<b>Group ' + this.series.yAxis.categories[this.point.y] + ' compared with Group ' + this.series.xAxis.categories[this.point.x] +' </b> had a similarity <br><b>' + this.point.value;
             }
         },
+		xAxis: {
+			categories: ['alt.atheism',
+'comp.graphics',
+'comp.os.ms-windows.misc',
+'comp.sys.ibm.pc.hardware',
+'comp.sys.mac.hardware',
+'comp.windows.x',
+'misc.forsale',
+'rec.autos',
+'rec.motorcycles',
+'rec.sport.baseball',
+'rec.sport.hockey',
+'sci.crypt',
+'sci.electronics',
+'sci.med',
+'sci.space',
+'soc.religion.christian',
+'talk.politics.guns',
+'talk.politics.mideast',
+'talk.politics.misc',
+'talk.religion.misc'
+]
+		},
+		yAxis: {
+			categories: ['alt.atheism',
+'comp.graphics',
+'comp.os.ms-windows.misc',
+'comp.sys.ibm.pc.hardware',
+'comp.sys.mac.hardware',
+'comp.windows.x',
+'misc.forsale',
+'rec.autos',
+'rec.motorcycles',
+'rec.sport.baseball',
+'rec.sport.hockey',
+'sci.crypt',
+'sci.electronics',
+'sci.med',
+'sci.space',
+'soc.religion.christian',
+'talk.politics.guns',
+'talk.politics.mideast',
+'talk.politics.misc',
+'talk.religion.misc'
+]
+		},
         colorAxis: {
             startOnTick: false,
             endOnTick: false

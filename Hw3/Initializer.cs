@@ -15,7 +15,7 @@ namespace Hw3
 			for (int i = 0; i < groupModels.Count; i++)
 			{
 				var groupModel = groupModels[i];
-				groups.Add(new Group(i, groupModel.GroupName));
+				groups.Add(new Group(i + 1, groupModel.GroupName));
 			}
 
 			// Now that we have the groups, start building every article, and put it in the right group
@@ -41,9 +41,9 @@ namespace Hw3
 			foreach(var keyValuePair in articleToDataModelMapping)
 			{
 				// Build the article
-				Article article = new Article(keyValuePair.Key, keyValuePair.Value);
+				int groupId = labelModels[keyValuePair.Key - 1].GroupId;
+				Article article = new Article(keyValuePair.Key, groupId, keyValuePair.Value);
 				// Determine the group they belong to
-				int groupId = labelModels[article.ArticleId - 1].GroupId;
 				groups[groupId - 1].Articles.Add(article);
 			}
 

@@ -7,11 +7,13 @@ namespace Hw3.SparseModels
 	public class Article
 	{
 		public int ArticleId { get; }
+		public int GroupId { get; }
 		public IReadOnlyDictionary<int, int> WordCounts { get; }
 
-		public Article(int articleId, IList<DataModel> dataModels)
+		public Article(int articleId, int groupId, IList<DataModel> dataModels)
 		{
 			ArticleId = articleId;
+			GroupId = groupId;
 			var wordCounts = new Dictionary<int, int>(dataModels.Count);
 			foreach (var dataModel in dataModels)
 			{
@@ -24,5 +26,7 @@ namespace Hw3.SparseModels
 		{
 			WordCounts = wordCounts;
 		}
+
+		public Article NearestNeighbor { get; set; }
 	}
 }

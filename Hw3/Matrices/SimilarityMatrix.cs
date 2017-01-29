@@ -3,11 +3,12 @@ using System.Linq;
 using Hw3.Similarities;
 using Hw3.SparseModels;
 
-namespace Hw3
+namespace Hw3.Matrices
 {
-	public class SimilarityMatrix
+	public class SimilarityMatrix : BaseMatrix
 	{
-		public double[,] Similarities { get; }
+		public override double[,] Similarities { get; }
+		public override string Name => SimilarityAlgorithm.Name;
 		public SimilarityAlgorithm SimilarityAlgorithm { get; }
 
 		private SimilarityMatrix(double[,] similarities, SimilarityAlgorithm similarityAlgorithm)

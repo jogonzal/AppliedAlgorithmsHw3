@@ -54,6 +54,8 @@
     <Compile Include="CsvUtils\CsvParseUtils.cs" />
     <Compile Include="Heatmaps\HeatMapBuilder.cs" />
     <Compile Include="Initializer.cs" />
+    <Compile Include="Matrices\BaseMatrix.cs" />
+    <Compile Include="NearestNeighbor\NearestNeighborCalculator.cs" />
     <Compile Include="ParsingModels\GroupModel.cs" />
     <Compile Include="ParsingModels\LabelModel.cs" />
     <Compile Include="ParsingModels\DataModel.cs" />
@@ -63,7 +65,8 @@
     <Compile Include="Similarities\CosineSimilarity.cs" />
     <Compile Include="Similarities\JaccardSimilarity.cs" />
     <Compile Include="Similarities\L2Similarity.cs" />
-    <Compile Include="SimilarityMatrix.cs" />
+    <Compile Include="Matrices\NearestNeighborMatrix.cs" />
+    <Compile Include="Matrices\SimilarityMatrix.cs" />
     <Compile Include="SparseModels\Group.cs" />
     <Compile Include="SparseModels\Article.cs" />
   </ItemGroup>

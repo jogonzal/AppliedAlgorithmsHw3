@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+
+using Hw3.Matrices;
 using Newtonsoft.Json;
 
 namespace Hw3.Heatmaps
@@ -10,7 +12,7 @@ namespace Hw3.Heatmaps
 		private const string AlgorithmReplacement = "{Algorithm}";
 		private const string DataReplacement = "{Data}";
 
-		public static void BuildAndDumpHeatmaps(List<SimilarityMatrix> similarityMatrices)
+		public static void BuildAndDumpHeatmaps(IEnumerable<BaseMatrix> similarityMatrices)
 		{
 			// We'll simply use http://jsfiddle.net/chz29mu2/
 
@@ -20,7 +22,7 @@ namespace Hw3.Heatmaps
 
 			foreach (var similarityMatrix in similarityMatrices)
 			{
-				string algorithmName = similarityMatrix.SimilarityAlgorithm.Name;
+				string algorithmName = similarityMatrix.Name;
 				string data = GetDataForMatrix(similarityMatrix.Similarities);
 
 				string templatizedFile = heatMapContent.Replace(AlgorithmReplacement, algorithmName).Replace(DataReplacement, data);
