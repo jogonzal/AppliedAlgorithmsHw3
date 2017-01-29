@@ -1,0 +1,129 @@
+
+body {
+	background-color: #eee;
+	font-size: 90%;
+	font-family: "Roboto Slab";
+}
+
+h1 {
+	font-family:"Roboto Slab",sans-serif;
+	font-size: 220%;
+}
+
+h5 {
+	font-size: 15px;
+}
+
+
+#page {
+	margin: 1.5em auto 3em auto;
+	background-color: white;
+	padding: 2em 3em 1.5em 3em;
+	border: 1px solid #ccc;
+	box-shadow: 2px 2px 8px #aaa;
+}
+
+.publication div
+{
+	border: 1px solid #ccc;
+}
+
+.pbody
+{
+    color: #333333;
+}
+
+.curr
+{
+    font-weight: bold;
+}
+
+.events td
+{
+    font-size: 90%;
+    color: firebrick;
+    vertical-align: top;
+}
+
+.event
+{
+   color: firebrick;
+}
+
+.description
+{
+    white-space: pre-line;
+    text-align: justify;
+    display: block;
+}
+
+.cal:link
+{
+    text-decoration: none;
+}
+
+.cal:visited
+{
+    text-decoration: none;
+}
+
+.cal:hover
+{
+    text-decoration: none;
+}
+
+.cal:active
+{
+    text-decoration: none;
+}
+
+.time
+{
+    text-align: right;
+    padding-right: 0.7em;
+    white-space: nowrap;
+}
+
+.date
+{
+    text-align: right;
+    padding-right: 0.5em;
+    white-space: nowrap;
+}
+
+.fontsmall
+{
+    font-size: 85%;
+}
+
+.marginbottom
+{
+    margin-bottom: 1em;
+}
+
+.margintop
+{
+    margin-top: 0.5em;
+}
+
+.marginleft
+{
+    margin-left: 1em;
+}
+
+.nomargintop
+{
+    margin-top: 0;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+img.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
