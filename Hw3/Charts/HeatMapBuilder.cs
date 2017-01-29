@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 
 using Hw3.Matrices;
+
 using Newtonsoft.Json;
 
 namespace Hw3.Heatmaps
@@ -17,7 +18,7 @@ namespace Hw3.Heatmaps
 			// We'll simply use http://jsfiddle.net/chz29mu2/
 
 			// We'll need to make a few string replacements, then we'll be able to build the HTML file from the template
-			string pathToHeatMapTemplate = Path.Combine(Directory.GetCurrentDirectory(), @"Heatmaps\HeatMapTemplate.html");
+			string pathToHeatMapTemplate = Path.Combine(Directory.GetCurrentDirectory(), @"Charts\HeatMapTemplate.html");
 			string heatMapContent = File.ReadAllText(pathToHeatMapTemplate);
 
 			foreach (var similarityMatrix in similarityMatrices)

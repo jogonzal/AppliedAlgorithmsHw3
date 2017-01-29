@@ -29,7 +29,7 @@ namespace Hw3
 				}
 			}
 
-			return new NearestNeighborMatrix(similarities, "Nearest neighbors matrix using " + similarityAlgorithm.Name + "(" + articleSet.Name + ")");
+			return new NearestNeighborMatrix(similarities, "Nearest neighbors matrix using " + similarityAlgorithm.Name + " (" + articleSet.Name + ")");
 		}
 
 		private static double CalculateNearestNeighborsForGroups(Group groupA, Group groupB)

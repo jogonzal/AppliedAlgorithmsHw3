@@ -14,6 +14,7 @@ namespace Hw3.Matrices
 			{
 				for (int c = 0; c < matrix.GetLength(1); c++)
 				{
+					// Mean = 0, stdev = 1
 					matrix[r, c] = NormalDistribution.GetRandom(0, 1, rand);
 				}
 			}

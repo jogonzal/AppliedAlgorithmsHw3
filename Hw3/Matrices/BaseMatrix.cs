@@ -3,7 +3,7 @@
 	public abstract class BaseMatrix
 	{
 		public double[,] Similarities { get; }
-		public string Name { get; }
+		public string Name { get; set; }
 
 		public BaseMatrix(double[,] similarities, string name)
 		{

@@ -51,10 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Charts\ScatterBuilder.cs" />
     <Compile Include="CsvUtils\CsvParseUtils.cs" />
     <Compile Include="ArticleSet.cs" />
-    <Compile Include="Heatmaps\HeatMapBuilder.cs" />
+    <Compile Include="Charts\HeatMapBuilder.cs" />
     <Compile Include="Distribution\NormalDistribution.cs" />
+    <Compile Include="Matrices\ScatterPlotInfo.cs" />
     <Compile Include="Matrices\SparseMatrixMultiply.cs" />
     <Compile Include="Matrices\MatrixCreate.cs" />
     <Compile Include="DimensionReducedArticleSet.cs" />
@@ -82,7 +84,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Heatmaps\HeatMapTemplate.html">
+    <Content Include="Charts\ScatterTemplate.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Charts\HeatMapTemplate.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

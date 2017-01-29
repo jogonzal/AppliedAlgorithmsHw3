@@ -28,7 +28,7 @@ namespace Hw3.Matrices
 				}
 			}
 
-			return new SimilarityMatrix(similarities, "Similarity matrix using " + similarityAlgorithm.Name + "(" + articleSet.Name + ")");
+			return new SimilarityMatrix(similarities, "Similarity matrix using " + similarityAlgorithm.Name + " (" + articleSet.Name + ")");
 		}
 
 		private static double CalculateSimilarityForGroups(Group groupA, Group groupB, SimilarityAlgorithm similarityAlgorithm)

@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
 using Hw3.CsvUtils;
 using Hw3.Heatmaps;
+using Hw3.Matrices;
 using Hw3.NearestNeighbor;
 using Hw3.ParsingModels;
 using Hw3.Similarities;
@@ -33,19 +35,31 @@ namespace Hw3
 			{
 				100, 50, 25, 10
 			};
-			IEnumerable<ArticleSet> dimensionReducedArticleSets = dimensionsToReduceTo.AsParallel().Select(d => DimensionReducedArticleSet.ReduceToDimensions(k, d, groups)).ToList();
-			List<ArticleSet> allArticleSets = new List<ArticleSet>(dimensionReducedArticleSets)
-			{
-				new ArticleSet(groups, "Normal")
-			};
+			ArticleSet originalArticleSet = new ArticleSet(groups, "Normal");
+			IEnumerable<DimensionReducedArticleSet> dimensionReducedArticleSets = dimensionsToReduceTo.AsParallel().Select(d => DimensionReducedArticleSet.ReduceToDimensions(k, d, groups)).ToList();
+			List<ArticleSet> allArticleSets = new List<ArticleSet>(dimensionReducedArticleSets);
+			allArticleSets.Insert(0, originalArticleSet);
 
 			// Now we'll calculate nearest neighbors for all dimension reduced groups
 			SimilarityAlgorithm similarityAlgorithm = new CosineSimilarity();
-			Parallel.ForEach(allArticleSets, a => NearestNeighborCalculator.Calculate(a.Groups, similarityAlgorithm));
 
-			List<NearestNeighborMatrix> nearestNeighborsMatrices = allArticleSets.AsParallel().Select(a => NearestNeighborMatrix.CalculateNearestNeighborMatrix(a, similarityAlgorithm)).ToList();
+			List<NearestNeighborMatrix> nearestNeighborsMatrices = allArticleSets.AsParallel().Select(a =>
+			{
+				Stopwatch sw = new Stopwatch();
+				sw.Start();
+				NearestNeighborCalculator.Calculate(a.Groups, similarityAlgorithm);
+				var matrix = NearestNeighborMatrix.CalculateNearestNeighborMatrix(a, similarityAlgorithm);
+				sw.Stop();
+				matrix.Name += $" ({sw.ElapsedMilliseconds} ms)";
+				return matrix;
+			}).ToList();
 
 			HeatMapBuilder.BuildAndDumpHeatmaps(nearestNeighborsMatrices);
+
+			List<ScatterPlotInfo> scatterPlotInfos =
+				dimensionReducedArticleSets.Select(a => ScatterPlotInfo.GetPlotInfo(originalArticleSet, a, similarityAlgorithm)).ToList();
+
+			ScatterBuilder.BuildAndDumpScatters(scatterPlotInfos);
 		}
 	}
 }
