@@ -97,7 +97,6 @@ namespace Hw3UnitTests
 			}));
 
 			result.Should().BeInRange(-14.46, -14.45); // - 14.45683229
-
 		}
 	}
 }
