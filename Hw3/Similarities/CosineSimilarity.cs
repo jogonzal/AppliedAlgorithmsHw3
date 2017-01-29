@@ -8,7 +8,23 @@ namespace Hw3.Similarities
 	{
 		public override double CalculateSimilarity(Article articleX, Article articleY)
 		{
-			throw new NotImplementedException();
+			double accNumerator = 0;
+			double accDenominatorX = 0;
+			double accDenominatorY = 0;
+
+			Action<double, double> performStep = (x, y) =>
+			{
+				accNumerator += x*y;
+				accDenominatorX += x * x;
+				accDenominatorY += y * y;
+			};
+
+			PerformSteps(performStep, articleX, articleY);
+
+			accDenominatorX = Math.Sqrt(accDenominatorX);
+			accDenominatorY = Math.Sqrt(accDenominatorY);
+
+			return accNumerator / (accDenominatorX * accDenominatorY);
 		}
 	}
 }
