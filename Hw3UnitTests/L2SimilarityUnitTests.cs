@@ -15,11 +15,11 @@ namespace Hw3UnitTests
 		public void TestWithVector_ShouldBe0()
 		{
 			var jac = new L2Similarity();
-			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, int>()
+			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, double>()
 			{
 				{0, 1},
 				{1, 2}
-			}), new Article(new Dictionary<int, int>()
+			}), new Article(new Dictionary<int, double>()
 			{
 				{2, 2},
 				{3, 3}
@@ -32,11 +32,11 @@ namespace Hw3UnitTests
 		public void TestWithVector_ShouldBe1()
 		{
 			var jac = new L2Similarity();
-			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, int>()
+			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, double>()
 			{
 				{0, 1},
 				{1, 2}
-			}), new Article(new Dictionary<int, int>()
+			}), new Article(new Dictionary<int, double>()
 			{
 				{0, 1},
 				{1, 2}
@@ -49,11 +49,11 @@ namespace Hw3UnitTests
 		public void TestWithVector_ShouldBe05()
 		{
 			var jac = new L2Similarity();
-			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, int>()
+			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, double>()
 			{
 				{0, 1},
 				{1, 2}
-			}), new Article(new Dictionary<int, int>()
+			}), new Article(new Dictionary<int, double>()
 			{
 				{0, 1},
 				{1, 5}
@@ -66,11 +66,11 @@ namespace Hw3UnitTests
 		public void TestWithVector_ShouldBeDecimal()
 		{
 			var jac = new L2Similarity();
-			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, int>()
+			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, double>()
 			{
 				{0, 1},
 				{1, 2}
-			}), new Article(new Dictionary<int, int>()
+			}), new Article(new Dictionary<int, double>()
 			{
 				{0, 1},
 				{1, 5},
@@ -84,12 +84,12 @@ namespace Hw3UnitTests
 		public void TestWithVector_ShouldBeDecimal2()
 		{
 			var jac = new L2Similarity();
-			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, int>()
+			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, double>()
 			{
 				{0, 1},
 				{1, 2},
 				{3, 10},
-			}), new Article(new Dictionary<int, int>()
+			}), new Article(new Dictionary<int, double>()
 			{
 				{0, 1},
 				{1, 5},

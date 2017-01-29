@@ -1,23 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using Hw3.Matrices;
+using Hw3.Similarities;
 using Hw3.SparseModels;
 
 namespace Hw3
 {
 	public class NearestNeighborMatrix : BaseMatrix
 	{
-		public override double[,] Similarities { get; }
-
-		public override string Name => "Nearest neighbors using Jacard";
-
-		private NearestNeighborMatrix(double[,] similarities)
+		private NearestNeighborMatrix(double[,] similarities, string name)
+			: base(similarities, name)
 		{
-			Similarities = similarities;
 		}
 
-		public static NearestNeighborMatrix CalculateNearestNeighborMatrix(List<Group> groups)
+		public static NearestNeighborMatrix CalculateNearestNeighborMatrix(ArticleSet articleSet, SimilarityAlgorithm similarityAlgorithm)
 		{
+			var groups = articleSet.Groups;
 			double[,] similarities = new double[groups.Count, groups.Count];
 
 			// For each row column, calculate similarities
@@ -30,7 +29,7 @@ namespace Hw3
 				}
 			}
 
-			return new NearestNeighborMatrix(similarities);
+			return new NearestNeighborMatrix(similarities, "Nearest neighbors matrix using " + similarityAlgorithm.Name + "(" + articleSet.Name + ")");
 		}
 
 		private static double CalculateNearestNeighborsForGroups(Group groupA, Group groupB)

@@ -12,7 +12,7 @@ namespace Hw3.Similarities
 		{
 			foreach (var wordCountX in articleX.WordCounts)
 			{
-				int wordCountY;
+				double wordCountY;
 				if (articleY.WordCounts.TryGetValue(wordCountX.Key, out wordCountY))
 				{
 					// Both are present - perform the operation

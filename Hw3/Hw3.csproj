@@ -52,9 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsvUtils\CsvParseUtils.cs" />
+    <Compile Include="ArticleSet.cs" />
     <Compile Include="Heatmaps\HeatMapBuilder.cs" />
     <Compile Include="Distribution\NormalDistribution.cs" />
+    <Compile Include="Matrices\SparseMatrixMultiply.cs" />
     <Compile Include="Matrices\MatrixCreate.cs" />
+    <Compile Include="DimensionReducedArticleSet.cs" />
     <Compile Include="Problem2.cs" />
     <Compile Include="Problem1.cs" />
     <Compile Include="Initializer.cs" />

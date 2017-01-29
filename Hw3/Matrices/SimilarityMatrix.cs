@@ -7,18 +7,14 @@ namespace Hw3.Matrices
 {
 	public class SimilarityMatrix : BaseMatrix
 	{
-		public override double[,] Similarities { get; }
-		public override string Name => SimilarityAlgorithm.Name;
-		public SimilarityAlgorithm SimilarityAlgorithm { get; }
-
-		private SimilarityMatrix(double[,] similarities, SimilarityAlgorithm similarityAlgorithm)
+		private SimilarityMatrix(double[,] similarities, string name)
+			: base(similarities, name)
 		{
-			Similarities = similarities;
-			SimilarityAlgorithm = similarityAlgorithm;
 		}
 
-		public static SimilarityMatrix CalculateSimilarityMatrix(List<Group> groups, SimilarityAlgorithm similarityAlgorithm)
+		public static SimilarityMatrix CalculateSimilarityMatrix(ArticleSet articleSet, SimilarityAlgorithm similarityAlgorithm)
 		{
+			var groups = articleSet.Groups;
 			double[,] similarities = new double[groups.Count, groups.Count];
 
 			// For each row column, calculate similarities
@@ -32,7 +28,7 @@ namespace Hw3.Matrices
 				}
 			}
 
-			return new SimilarityMatrix(similarities, similarityAlgorithm);
+			return new SimilarityMatrix(similarities, "Similarity matrix using " + similarityAlgorithm.Name + "(" + articleSet.Name + ")");
 		}
 
 		private static double CalculateSimilarityForGroups(Group groupA, Group groupB, SimilarityAlgorithm similarityAlgorithm)

@@ -1,7 +1,13 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-using Hw3.Matrices;
-using Newtonsoft.Json;
+using Hw3.CsvUtils;
+using Hw3.Heatmaps;
+using Hw3.NearestNeighbor;
+using Hw3.ParsingModels;
+using Hw3.Similarities;
+using Hw3.SparseModels;
 
 namespace Hw3
 {
@@ -9,18 +15,37 @@ namespace Hw3
 	{
 		public static void Run()
 		{
-			Random rand = new Random();
+			// First parse content from files
+			List<DataModel> dataModels;
+			List<GroupModel> groupModels;
+			List<LabelModel> labelModels;
+			CsvParseUtils.ParseCsvFiles(out dataModels, out groupModels, out labelModels);
 
-			// Define k and d as you would like
-			int k = 20;
-			int d = 20;
+			// Then let the grouping begin
+			List<Group> groups = Initializer.InitializeAll(dataModels, groupModels, labelModels);
 
-			// Create a random matrix with values sampled from a normal distribution
-			double[,] matrixWithRandomNormalValues = MatrixCreate.CreateRandomNormalDistributionMatrix(k, d, rand);
+			// The maximum word id + 1 will be "k"
+			int maximumWordId = groups.SelectMany(g => g.Articles).SelectMany(a => a.WordCounts).Max(w => w.Key);
+			int k = maximumWordId + 1;
 
-			string dump = JsonConvert.SerializeObject(matrixWithRandomNormalValues);
+			// Reduce the articles to the dimensions specified below
+			List<int> dimensionsToReduceTo = new List<int>()
+			{
+				100, 50, 25, 10
+			};
+			IEnumerable<ArticleSet> dimensionReducedArticleSets = dimensionsToReduceTo.AsParallel().Select(d => DimensionReducedArticleSet.ReduceToDimensions(k, d, groups)).ToList();
+			List<ArticleSet> allArticleSets = new List<ArticleSet>(dimensionReducedArticleSets)
+			{
+				new ArticleSet(groups, "Normal")
+			};
 
-			Console.ReadKey();
+			// Now we'll calculate nearest neighbors for all dimension reduced groups
+			SimilarityAlgorithm similarityAlgorithm = new CosineSimilarity();
+			Parallel.ForEach(allArticleSets, a => NearestNeighborCalculator.Calculate(a.Groups, similarityAlgorithm));
+
+			List<NearestNeighborMatrix> nearestNeighborsMatrices = allArticleSets.AsParallel().Select(a => NearestNeighborMatrix.CalculateNearestNeighborMatrix(a, similarityAlgorithm)).ToList();
+
+			HeatMapBuilder.BuildAndDumpHeatmaps(nearestNeighborsMatrices);
 		}
 	}
 }

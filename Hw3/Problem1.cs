@@ -21,14 +21,16 @@ namespace Hw3
 			List<LabelModel> labelModels;
 			CsvParseUtils.ParseCsvFiles(out dataModels, out groupModels, out labelModels);
 
-			// Then let the grouping and hashing begin
+			// Then let the grouping begin
 			List<Group> groups = Initializer.InitializeAll(dataModels, groupModels, labelModels);
 
 			// Calculate nearest neighbors for every article, using Jacard, in parallel
-			NearestNeighborCalculator.Calculate(groups, new JaccardSimilarity());
+			SimilarityAlgorithm similarityAlgorithm = new JaccardSimilarity();
+			NearestNeighborCalculator.Calculate(groups, similarityAlgorithm);
+			ArticleSet articleSet = new ArticleSet(groups, "Normal");
 
 			// Calculate the nearest neighbors matrix with Jacard
-			NearestNeighborMatrix nearestNeighborsMatrix = NearestNeighborMatrix.CalculateNearestNeighborMatrix(groups);
+			NearestNeighborMatrix nearestNeighborsMatrix = NearestNeighborMatrix.CalculateNearestNeighborMatrix(articleSet, similarityAlgorithm);
 
 			// Calculate similarity matrices for all 3 algorithms in parallel
 			List<SimilarityAlgorithm> similarityAlgorithms = new List<SimilarityAlgorithm>()
@@ -37,7 +39,7 @@ namespace Hw3
 				new CosineSimilarity(),
 				new L2Similarity()
 			};
-			List<SimilarityMatrix> similarityMatrices = similarityAlgorithms.AsParallel().Select(similarityAlgorithm => SimilarityMatrix.CalculateSimilarityMatrix(groups, similarityAlgorithm)).ToList();
+			List<SimilarityMatrix> similarityMatrices = similarityAlgorithms.AsParallel().Select(s => SimilarityMatrix.CalculateSimilarityMatrix(articleSet, s)).ToList();
 
 			// Build heatmaps for similarity matrices
 			HeatMapBuilder.BuildAndDumpHeatmaps(similarityMatrices);

@@ -8,7 +8,7 @@ namespace Hw3.Matrices
 	{
 		public static double[,] CreateRandomNormalDistributionMatrix(int k, int d, Random rand)
 		{
-			double[,] matrix = new double[k,d];
+			double[,] matrix = new double[d,k];
 
 			for (int r = 0; r < matrix.GetLength(0); r++)
 			{
