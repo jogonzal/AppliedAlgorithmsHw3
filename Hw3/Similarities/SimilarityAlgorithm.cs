@@ -6,6 +6,7 @@ namespace Hw3.Similarities
 	public abstract class SimilarityAlgorithm
 	{
 		public abstract double CalculateSimilarity(Article articleX, Article articleY);
+		public abstract string Name { get; }
 
 		protected void PerformSteps(Action<double, double> performStep, Article articleX, Article articleY)
 		{

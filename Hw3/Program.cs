@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+
 using Hw3.CsvUtils;
+using Hw3.Heatmaps;
 using Hw3.ParsingModels;
 using Hw3.Similarities;
 using Hw3.SparseModels;
@@ -33,9 +34,7 @@ namespace Hw3
 
 			List<SimilarityMatrix> result = similarityAlgorithms.AsParallel().Select(similarityAlgorithm => SimilarityMatrix.CalculateSimilarityMatrix(groups, similarityAlgorithm)).ToList();
 
-			string dumpResult = JsonConvert.SerializeObject(result);
-
-			Console.ReadKey();
+			HeatMapBuilder.BuildAndDumpHeatmaps(result);
 		}
 	}
 }

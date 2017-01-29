@@ -21,5 +21,8 @@ namespace Hw3.Similarities
 
 			return accNumerator / accDenominator;
 		}
+
+		public override string Name => "Jacard";
+
 	}
 }

@@ -22,5 +22,7 @@ namespace Hw3.Similarities
 
 			return (-1 *  acc);
 		}
+
+		public override string Name => "L2";
 	}
 }

@@ -26,5 +26,7 @@ namespace Hw3.Similarities
 
 			return accNumerator / (accDenominatorX * accDenominatorY);
 		}
+
+		public override string Name => "Cosine";
 	}
 }
