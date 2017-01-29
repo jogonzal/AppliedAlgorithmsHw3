@@ -3,7 +3,7 @@ using Hw3.SparseModels;
 
 namespace Hw3.Similarities
 {
-	public abstract class BaseSimilarity
+	public abstract class SimilarityAlgorithm
 	{
 		public abstract double CalculateSimilarity(Article articleX, Article articleY);
 

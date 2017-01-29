@@ -4,7 +4,7 @@ using Hw3.SparseModels;
 
 namespace Hw3.Similarities
 {
-	public class L2Similarity : BaseSimilarity
+	public class L2Similarity : SimilarityAlgorithm
 	{
 		public override double CalculateSimilarity(Article articleX, Article articleY)
 		{

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-
+using System.Linq;
+using System.Threading.Tasks;
 using Hw3.CsvUtils;
 using Hw3.ParsingModels;
+using Hw3.Similarities;
 using Hw3.SparseModels;
+using Newtonsoft.Json;
 
 namespace Hw3
 {
@@ -20,6 +23,17 @@ namespace Hw3
 
 			// Then let the grouping and hashing begin
 			List<Group> groups = Initializer.InitializeAll(dataModels, groupModels, labelModels);
+
+			List<SimilarityAlgorithm> similarityAlgorithms = new List<SimilarityAlgorithm>()
+			{
+				new JaccardSimilarity(),
+				new CosineSimilarity(),
+				new L2Similarity()
+			};
+
+			List<SimilarityMatrix> result = similarityAlgorithms.AsParallel().Select(similarityAlgorithm => SimilarityMatrix.CalculateSimilarityMatrix(groups, similarityAlgorithm)).ToList();
+
+			string dumpResult = JsonConvert.SerializeObject(result);
 
 			Console.ReadKey();
 		}
