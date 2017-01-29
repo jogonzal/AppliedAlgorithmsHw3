@@ -13,7 +13,7 @@ namespace Hw3UnitTests
 		[TestMethod]
 		public void TestWithVector_ShouldBe0()
 		{
-			JaccardSimilarity jac = new JaccardSimilarity();
+			var jac = new JaccardSimilarity();
 			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, int>()
 			{
 				{0, 1},
@@ -30,7 +30,7 @@ namespace Hw3UnitTests
 		[TestMethod]
 		public void TestWithVector_ShouldBe1()
 		{
-			JaccardSimilarity jac = new JaccardSimilarity();
+			var jac = new JaccardSimilarity();
 			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, int>()
 			{
 				{0, 1},
@@ -47,7 +47,7 @@ namespace Hw3UnitTests
 		[TestMethod]
 		public void TestWithVector_ShouldBe05()
 		{
-			JaccardSimilarity jac = new JaccardSimilarity();
+			var jac = new JaccardSimilarity();
 			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, int>()
 			{
 				{0, 1},
@@ -64,7 +64,7 @@ namespace Hw3UnitTests
 		[TestMethod]
 		public void TestWithVector_ShouldBeDecimal()
 		{
-			JaccardSimilarity jac = new JaccardSimilarity();
+			var jac = new JaccardSimilarity();
 			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, int>()
 			{
 				{0, 1},
@@ -82,7 +82,7 @@ namespace Hw3UnitTests
 		[TestMethod]
 		public void TestWithVector_ShouldBeDecimal2()
 		{
-			JaccardSimilarity jac = new JaccardSimilarity();
+			var jac = new JaccardSimilarity();
 			double result = jac.CalculateSimilarity(new Article(new Dictionary<int, int>()
 			{
 				{0, 1},
