@@ -20,7 +20,9 @@ namespace Hw3
 			Random rand = new Random();
 
 			// Create a random matrix with values sampled from a normal distribution
-			double[,] matrixWithRandomNormalValues = MatrixCreate.CreateRandomNormalDistributionMatrix(k, d, rand);
+			// NOTE - uncomment this code to use a gaussian/plusoneminusone matrix
+			double[,] matrixForDimensionReduction = MatrixCreate.CreateRandomNormalDistributionMatrix(k, d, rand);
+			//double[,] matrixForDimensionReduction = MatrixCreate.CreateRandomPlusOneMinusOneMatrix(k, d, rand);
 
 			List<Group> newGroups = new List<Group>(groups.Count);
 			// We'll have to create a random matrix of k x d, where k is the maximum number of words we can have
@@ -31,7 +33,7 @@ namespace Hw3
 
 				foreach (var article in group.Articles)
 				{
-					Article newArticle = ReduceArticleDimension(article, matrixWithRandomNormalValues);
+					Article newArticle = ReduceArticleDimension(article, matrixForDimensionReduction);
 					newArticles.Add(newArticle);
 				}
 
@@ -41,10 +43,10 @@ namespace Hw3
 			return new DimensionReducedArticleSet(newGroups, d);
 		}
 
-		private static Article ReduceArticleDimension(Article article, double[,] matrixWithRandomNormalValues)
+		private static Article ReduceArticleDimension(Article article, double[,] matrixForDimensionReduction)
 		{
 			// To redice the dimension of the article, we'll have to compute the dot product
-			var newWordCounts = SparseMatrixMultiply.DotProduct(matrixWithRandomNormalValues, article.WordCounts);
+			var newWordCounts = SparseMatrixMultiply.DotProduct(matrixForDimensionReduction, article.WordCounts);
 
 			return new Article(newWordCounts, article.ArticleId, article.GroupId);
 		}

@@ -21,5 +21,21 @@ namespace Hw3.Matrices
 
 			return matrix;
 		}
+
+		public static double[,] CreateRandomPlusOneMinusOneMatrix(int k, int d, Random rand)
+		{
+			double[,] matrix = new double[d, k];
+
+			for (int r = 0; r < matrix.GetLength(0); r++)
+			{
+				for (int c = 0; c < matrix.GetLength(1); c++)
+				{
+					bool randomBoolean = rand.NextDouble() >= 0.5;
+					matrix[r, c] = randomBoolean ? 1 : -1;
+				}
+			}
+
+			return matrix;
+		}
 	}
 }
