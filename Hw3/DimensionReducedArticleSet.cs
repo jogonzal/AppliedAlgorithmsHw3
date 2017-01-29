@@ -46,7 +46,7 @@ namespace Hw3
 		private static Article ReduceArticleDimension(Article article, double[,] matrixForDimensionReduction)
 		{
 			// To redice the dimension of the article, we'll have to compute the dot product
-			var newWordCounts = SparseMatrixMultiply.DotProduct(matrixForDimensionReduction, article.WordCounts);
+			var newWordCounts = SparseMatrixVectorDotProduct.DotProduct(matrixForDimensionReduction, article.WordCounts);
 
 			return new Article(newWordCounts, article.ArticleId, article.GroupId);
 		}

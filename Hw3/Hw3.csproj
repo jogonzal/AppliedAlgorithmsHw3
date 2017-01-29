@@ -57,7 +57,7 @@
     <Compile Include="Charts\HeatMapBuilder.cs" />
     <Compile Include="Distribution\NormalDistribution.cs" />
     <Compile Include="Matrices\ScatterPlotInfo.cs" />
-    <Compile Include="Matrices\SparseMatrixMultiply.cs" />
+    <Compile Include="Matrices\SparseMatrixVectorDotProduct.cs" />
     <Compile Include="Matrices\MatrixCreate.cs" />
     <Compile Include="DimensionReducedArticleSet.cs" />
     <Compile Include="Problem2.cs" />

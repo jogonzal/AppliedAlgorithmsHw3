@@ -2,7 +2,7 @@
 
 namespace Hw3.Matrices
 {
-	public static class SparseMatrixMultiply
+	public static class SparseMatrixVectorDotProduct
 	{
 		public static Dictionary<int, double> DotProduct(double[,] matrix, IReadOnlyDictionary<int, double> sparseVector)
 		{
