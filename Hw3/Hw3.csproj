@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="CsvUtils\CsvParseUtils.cs" />
     <Compile Include="Heatmaps\HeatMapBuilder.cs" />
+    <Compile Include="Problem2.cs" />
+    <Compile Include="Problem1.cs" />
     <Compile Include="Initializer.cs" />
     <Compile Include="Matrices\BaseMatrix.cs" />
     <Compile Include="NearestNeighbor\NearestNeighborCalculator.cs" />

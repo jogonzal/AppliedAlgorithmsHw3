@@ -11,8 +11,9 @@ namespace Hw3.CsvUtils
 {
 	public static class CsvParseUtils
 	{
-		public static void ParseCsvFiles(string pathToRoot, out List<DataModel> dataModels, out List<GroupModel> groupModels, out List<LabelModel> labelModels)
+		public static void ParseCsvFiles(out List<DataModel> dataModels, out List<GroupModel> groupModels, out List<LabelModel> labelModels)
 		{
+			string pathToRoot = Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\collateral\");
 			string pathToData = Path.Combine(pathToRoot, "data50.csv");
 			string pathToGroups = Path.Combine(pathToRoot, "groups.csv");
 			string pathToLabel = Path.Combine(pathToRoot, "label.csv");
