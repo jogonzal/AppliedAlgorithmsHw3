@@ -42,6 +42,7 @@ namespace Hw3
 			// Now we'll calculate nearest neighbors for all dimension reduced groups
 			SimilarityAlgorithm similarityAlgorithm = new CosineSimilarity();
 
+			// Run the nearest neighbor for all dimensions in parallel, while measuring the wall time with stopwatch
 			List<NearestNeighborMatrix> nearestNeighborsMatrices = allArticleSets.AsParallel().Select(a =>
 			{
 				Stopwatch sw = new Stopwatch();
@@ -53,11 +54,12 @@ namespace Hw3
 				return matrix;
 			}).ToList();
 
+			// Build heatmaps
 			HeatMapBuilder.BuildAndDumpHeatmaps(nearestNeighborsMatrices);
 
+			// Build scatter plots
 			List<ScatterPlotInfo> scatterPlotInfos =
 				dimensionReducedArticleSets.Select(a => ScatterPlotInfo.GetPlotInfo(originalArticleSet, a, similarityAlgorithm)).ToList();
-
 			ScatterBuilder.BuildAndDumpScatters(scatterPlotInfos);
 		}
 	}
